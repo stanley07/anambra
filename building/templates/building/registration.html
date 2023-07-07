@@ -1,0 +1,33 @@
+<!-- building/templates/building/registration.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registration Form</title>
+</head>
+<body>
+    <h1>Registration Form</h1>
+    
+    {% if messages %}
+        {% for message in messages %}
+            {% if message.tags == 'success' %}
+                <div class="alert alert-success">
+                    {{ message }}
+                </div>
+            {% elif message.tags == 'error' %}
+                <div class="alert alert-danger">
+                    {{ message }}
+                </div>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+    
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Register">
+    </form>
+    
+    <p><a href="{% url 'building:registration' %}">Register another building</a></p>
+</body>
+</html>

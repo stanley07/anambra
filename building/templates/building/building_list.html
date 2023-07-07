@@ -1,0 +1,77 @@
+<!-- building/templates/building/building_list.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Building List</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        img {
+            max-width: 100px;
+            max-height: 100px;
+            cursor: pointer;
+        }
+        
+        /* Responsive styles for smaller screens */
+        @media screen and (max-width: 480px) {
+            table {
+                font-size: 14px;
+            }
+            th, td {
+                padding: 6px;
+            }
+            img {
+                max-width: 80px;
+                max-height: 80px;
+            }
+        }
+    </style>
+    <script>
+        function openImage(url) {
+            window.open(url, '_blank');
+        }
+    </script>
+</head>
+<body>
+    <h1>Building List</h1>
+
+    {% if buildings %}
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Owner Name</th>
+                <th>Address</th>
+                <th>Building Type</th>
+                <th>Amount Value</th>
+                <th>Contact</th>
+                <th>Ansidd No</th>
+                <th>Image</th>
+            </tr>
+            {% for building in buildings %}
+                <tr>
+                    <td>{{ building.id }}</td>
+                    <td>{{ building.owner_name }}</td>
+                    <td>{{ building.address }}</td>
+                    <td>{{ building.building_type }}</td>
+                    <td>{{ building.amount_value }}</td>
+                    <td>{{ building.contact }}</td>
+                    <td>{{ building.ansidd_no }}</td>
+                    <td><img src="{{ building.image.url }}" alt="Building Image" onclick="openImage('{{ building.image.url }}')"></td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>No buildings registered.</p>
+    {% endif %}
+
+    <p><a href="{% url 'building:registration' %}">Register a new building</a></p>
+</body>
+</html>
