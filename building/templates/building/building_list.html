@@ -47,12 +47,17 @@
         <table>
             <tr>
                 <th>ID</th>
-                <th>Owner Name</th>
+                <th>Owner's Name</th>
                 <th>Address</th>
                 <th>Building Type</th>
+                <th>Number Of Flats</th>
                 <th>Amount Value</th>
                 <th>Contact</th>
                 <th>Ansidd No</th>
+                <th>Geographical Zone</th>
+                <th>Email</th>
+                <th>Phone Number</th>
+                <th>Agent Id</th>
                 <th>Image</th>
             </tr>
             {% for building in buildings %}
@@ -61,9 +66,14 @@
                     <td>{{ building.owner_name }}</td>
                     <td>{{ building.address }}</td>
                     <td>{{ building.building_type }}</td>
+                    <td>{{ building.number_flats }}</td>
                     <td>{{ building.amount_value }}</td>
                     <td>{{ building.contact }}</td>
                     <td>{{ building.ansidd_no }}</td>
+                    <td>{{ building.geographical_zone }}</td>
+                    <td>{{ building.email }}</td>
+                    <td>{{ building.phone_number }}</td>
+                    <td>{{ building.agent_id }}</td>
                     <td><img src="{{ building.image.url }}" alt="Building Image" onclick="openImage('{{ building.image.url }}')"></td>
                 </tr>
             {% endfor %}
