@@ -3,6 +3,9 @@ from django.contrib import messages
 from .forms import BuildingForm
 from .models import Building
 
+def homepage(request):
+    return render(request, 'building/homepage.html')
+
 def register_building(request):
     if request.method == 'POST':
         form = BuildingForm(request.POST, request.FILES)
@@ -21,3 +24,15 @@ def registration_success(request):
 def building_list(request):
     buildings = Building.objects.all()
     return render(request, 'building/building_list.html', {'buildings': buildings})
+
+def update_building(request, pk):
+    building = Building.objects.get(pk=pk)
+    if request.method == 'POST':
+        form = BuildingForm(request.POST, request.FILES, instance=building)
+        if form.is_valid():
+            building = form.save()
+            messages.success(request, 'Building details updated successfully.')
+            return redirect('building:building_list')
+    else:
+        form = BuildingForm(instance=building)
+    return render(request, 'building/update_building.html', {'form': form})
