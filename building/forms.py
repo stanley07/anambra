@@ -11,4 +11,4 @@ class BuildingForm(forms.ModelForm):
 
     class Meta:
         model = Building
-        fields = ('owner_name', 'address', 'building_type', 'number_flats', 'amount_value', 'contact', 'ansidd_no', 'geographical_zone', 'email', 'phone_number', 'agent_id', 'image')
+        fields = ('owner_name', 'address', 'building_type', 'number_flats', 'amount_value',  'ansidd_no', 'geographical_zone', 'email', 'phone_number', 'agent_id', 'image')

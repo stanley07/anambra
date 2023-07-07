@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-g_98fh%*4m0c22azaj&ga=aljj9d%04&zp636j8!(((&9l(oc(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['anambra-building-enumeration.onrender.com']
+ALLOWED_HOSTS = ['anambra-building-enumeration.onrender.com', '0.0.0.0']
 
 
 # Application definition
