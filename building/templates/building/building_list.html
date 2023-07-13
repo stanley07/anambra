@@ -14,12 +14,6 @@
             text-align: left;
             border-bottom: 1px solid #ddd;
         }
-        img {
-            max-width: 100px;
-            max-height: 100px;
-            cursor: pointer;
-        }
-        
         /* Responsive styles for smaller screens */
         @media screen and (max-width: 480px) {
             table {
@@ -28,17 +22,8 @@
             th, td {
                 padding: 6px;
             }
-            img {
-                max-width: 80px;
-                max-height: 80px;
-            }
         }
     </style>
-    <script>
-        function openImage(url) {
-            window.open(url, '_blank');
-        }
-    </script>
 </head>
 <body>
     <h1>Building List</h1>
@@ -53,7 +38,7 @@
                 <th>Number Of Flats</th>
                 <th>Amount Value</th>
                 <th>Ansidd No</th>
-                <th>Geographical Zone</th>
+                <th>L_G_A</th>
                 <th>Email</th>
                 <th>Phone Number</th>
                 <th>Agent Id</th>
@@ -68,11 +53,15 @@
                     <td>{{ building.number_flats }}</td>
                     <td>{{ building.amount_value }}</td>
                     <td>{{ building.ansidd_no }}</td>
-                    <td>{{ building.geographical_zone }}</td>
+                    <td>{{ building.L_G_A }}</td>
                     <td>{{ building.email }}</td>
                     <td>{{ building.phone_number }}</td>
                     <td>{{ building.agent_id }}</td>
-                    <td><img src="{{ building.image.url }}" alt="Building Image" onclick="openImage('{{ building.image.url }}')"></td>
+                    <td>
+                        <a href="{{ building.image.url }}" target="_blank">
+                            <img src="{{ building.image.url }}" alt="Building Image" width="100">
+                        </a>
+                    </td>
                 </tr>
             {% endfor %}
         </table>
